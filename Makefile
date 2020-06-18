@@ -9,7 +9,7 @@ CXX           := g++
 CXXFLAGS      := -Wall -pthread $(OPT) -fPIC -I$(ROOTSYS)/include
 LD            := g++
 LDFLAGS       := $(OPT) -pthread
-LIBS         	:= $(ROOTGLIBS) -L/usr/X11R6/lib -lX11 -lXpm
+LIBS          := $(ROOTGLIBS) -L/usr/X11R6/lib -lX11 -lXpm
 
 
 #include all header files for linking here
@@ -40,7 +40,6 @@ libtree.so: $(OBJS) Dictionary.o
 	$(LD) $(LDFLAGS) -shared -o $@ $^ $(LIBS)
 
 #To illustrate what's going on below we compile the dictionary file independently
-#The
 Dictionary.o: Dictionary.C
 	@echo "Creating dictionary object.."
 	$(CXX) -c $(CXXFLAGS) $<
