@@ -37,7 +37,7 @@ lib: libtree.so
 #We're linking our dictionary with all of our object files.
 libtree.so: $(OBJS) Dictionary.o
 	@echo "Creating shared library.."
-	$(LD) $(LDFLAGS) -shared -o libtree.so $^ $(LIBS)
+	$(LD) $(LDFLAGS) -shared -o $@ $^ $(LIBS)
 
 #To illustrate what's going on below we compile the dictionary file independently
 #The
@@ -52,7 +52,7 @@ Dictionary.C: $(HDRS) LinkDef.h
 #This will be a simple program we use to test our class implementation
 program: program.o
 	@echo "Creating program.."
-	$(LD) $(LDFLAGS) -o $@ $< $(LIBS) -L/path/to/linkdef/ -ltree
+	$(LD) $(LDFLAGS) -o $@ $< $(LIBS) -L/path/to/library/ -ltree
 
 #This rule helps us build our individual machine-readable object files for header files listed in HDRS
 %.o: %.cxx

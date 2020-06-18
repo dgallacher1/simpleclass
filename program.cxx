@@ -1,6 +1,6 @@
 //Here we have a simple program that uses our custom ROOT class.
 
-#include "SimpleClass.h"
+#include "SimpleClass.hh"
 
 #include "TROOT.h"
 #include "TObject.h"
@@ -9,27 +9,26 @@
 
 using namespace std;
 
-int main(int argc, char **arg){
+int main(int argc, char **argv){
 
     Int_t val;
-    if(argc==1){
-        val = atoi(argv[1]);
+    if(argc==2){
+      val = atoi(argv[1]);
     } else {
-        cout <<"./program value"<< endl;
-     exit(0);
+      cout <<"./program value"<< endl;
+      return 0;
     }
 
-    SimpleClass *class = new SimpleClass();
+    SimpleClass *simpleclass = new SimpleClass();
 
-    class->SetValue(val);
+    simpleclass->SetValue(val);
 
-    Double_t valsq = class->GetSquare();
+    Double_t valsq = simpleclass->GetSquare();
 
     cout << "Value squared = " << valsq << endl;
 
-    //We own the pointer so we have to delete it.
-    delete class;
-    class =0;
+    delete simpleclass;
+    simpleclass =0;
 
     return 0;
 }

@@ -25,7 +25,7 @@ void SimpleClass::Init()
   value = 0.0;
 }
 
-Double_t SimpleClass::GetSquare()
+Int_t SimpleClass::GetSquare()
 {
   return value*value; // Returns the square of the value
 }
